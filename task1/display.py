@@ -27,31 +27,34 @@ def on_extract_button_click():
     for data in extracted_data:
         result_text.insert(tk.END, data + "\n")
 
-# Create a simple GUI window
 root = tk.Tk()
 root.title("Web Data Extractor")
 
-# Create and place input widgets
-url_label = ttk.Label(root, text="Enter URL:")
+# Tạo đối tượng Style để tùy chỉnh giao diện bằng CSS
+style = ttk.Style(root)
+style.configure("TLabel", font=("Helvetica", 12))
+style.configure("TEntry", font=("Helvetica", 12))
+style.configure("TButton", font=("Helvetica", 12))
+
+url_label = ttk.Label(root, text="Enter URL:", style="TLabel")
 url_label.pack(padx=10, pady=5)
 
-url_entry = ttk.Entry(root)
+url_entry = ttk.Entry(root, style="TEntry")
 url_entry.pack(padx=10, pady=5, fill=tk.X)
 
-xpath_label = ttk.Label(root, text="Enter Content XPath:")
+xpath_label = ttk.Label(root, text="Enter Content XPath:", style="TLabel")
 xpath_label.pack(padx=10, pady=5)
 
-xpath_entry = ttk.Entry(root)
+xpath_entry = ttk.Entry(root, style="TEntry")
 xpath_entry.pack(padx=10, pady=5, fill=tk.X)
 
-extract_button = ttk.Button(root, text="Extract Data", command=on_extract_button_click)
+extract_button = ttk.Button(root, text="Extract Data", style="TButton", command=on_extract_button_click)
 extract_button.pack(padx=10, pady=10)
 
-result_label = ttk.Label(root, text="Extracted Data:")
+result_label = ttk.Label(root, text="Extracted Data:", style="TLabel")
 result_label.pack(padx=10, pady=5)
 
 result_text = tk.Text(root, wrap=tk.WORD, height=10, width=40)
 result_text.pack(padx=10, pady=5)
 
-# Start the GUI event loop
 root.mainloop()
